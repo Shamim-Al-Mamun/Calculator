@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2a6dbae833.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../style.css" >
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="flex-container">
+        <div class="flex-item">
+            <div class="currentInput" value="0"></div>
+            <div class="result"></div>
+            <div class="menu">
+                <button class="history" onclick="handleHistory()">HISTORY</button>
+                <button class="backspace" onclick="handleBackSpace()"><i class="fa-solid fa-angles-left icon"></i></button>
+            </div>
+            <div class="input">
+                <button id="clear" onclick="handleClear()">C</button>
+                <button id="operator" onclick="handleBracket('()')">( )</button>
+                <button id="operator" onclick="handleInput('%')">%</button>
+                <button id="operator" onclick="handleInput('/')">÷</button>
+            </div>
+            <div class="input">
+                <button onclick="handleInput(7)">7</button>
+                <button onclick="handleInput(8)">8</button>
+                <button onclick="handleInput(9)">9</button>
+                <button id="operator" onclick="handleInput('*')">×</button>
+            </div>
+            <div class="input">
+                <button onclick="handleInput(4)">4</button>
+                <button onclick="handleInput(5)">5</button>
+                <button onclick="handleInput(6)">6</button>
+                <button id="operator" onclick="handleInput('-')">−</button>
+            </div>
+            <div class="input">
+                <button onclick="handleInput(1)" >1</button>
+                <button onclick="handleInput(2)">2</button>
+                <button onclick="handleInput(3)">3</button>
+                <button id="operator" onclick="handleInput('+')">+</button>
+            </div>
+            <div class="input">
+                <button onclick="handleInput('00')">00</button>
+                <button onclick="handleInput(0)">0</button>
+                <button onclick="handleDecimal('.')">.</button>
+                <button id="equals" onclick="handleCalculate()">=</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../index.js"></script>
+</html>
