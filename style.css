@@ -71,13 +71,13 @@ body{
 }
 .input button{
     width: 25%;
-    font-weight: 525;
+    font-weight: 500;
     cursor: pointer;
     padding: 0;
     border: none; 
     background: none;
     border: 1px solid rgb(128, 128, 128, .1);
-    font-size: larger;
+    font-size: 1.2rem;
     color: rgb(0, 0, 0, .9);
 }
 .input button:hover, .menu button:hover{
@@ -98,10 +98,11 @@ body{
 
 }
 @media (max-width: 650px) {
+    .flex-container{
+        height: 550px;
+    }
     .flex-item{
         width: 100%;
-    }
-    .flex-container{
         height: 550px;
     }
 }

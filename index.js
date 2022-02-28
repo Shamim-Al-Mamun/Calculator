@@ -101,7 +101,7 @@ function handleInput(value){
         }
     }
     //Setting input limit
-    if(currentValue.innerHTML.length >len){
+    if(currentValue.innerHTML.length >= len){
         currentValue.innerHTML = currentValue.innerHTML.substring(0, len);
         temp = currentValue.innerHTML;
         result.innerHTML ="Maximum 15 characters!"
@@ -122,40 +122,59 @@ const handleBracket = (value) =>{
         currentValue.innerHTML = temp;
     }
     else if(temp){
-        if(Number(temp[temp.length-1])){
-            if((temp.split("(").length - 1)===0){
-                temp += "*" + value[0];
-                currentValue.innerHTML = temp;    
+        if(temp.length < len-1){
+            if(Number(temp[temp.length-1])){
+                if((temp.split("(").length - 1)===0 && !  len-1){
+                    temp += "*" + value[0];
+                    currentValue.innerHTML = temp;    
+                }
+                else if((temp.split("(").length - 1)> (temp.split(")").length - 1)){
+                    temp += value[1];
+                    currentValue.innerHTML = temp;    
+                }
+                else{
+                    temp += "*" + value[0];
+                    currentValue.innerHTML = temp; 
+                }
+            }
+            else if((temp[temp.length-1]) ===")"){
+                if((temp.split("(").length - 1)=== (temp.split(")").length - 1)){
+                    temp += "*" + value[0];
+                    currentValue.innerHTML = temp;
+                }
+                else if((temp.split("(").length - 1)> (temp.split(")").length - 1)){temp += value[1];currentValue.innerHTML = temp}
+            }
+            else{
+                temp += value[0];
+                currentValue.innerHTML = temp;
+            }
+        }
+        else{
+            if((temp.split("(").length - 1)=== (temp.split(")").length - 1)){
+                temp +=value[0];
+                currentValue.innerHTML = temp;
             }
             else if((temp.split("(").length - 1)> (temp.split(")").length - 1)){
                 temp += value[1];
-                currentValue.innerHTML = temp;    
-            }
+                currentValue.innerHTML = temp;
+                }
             else{
-                temp += "*" + value[0];
-                currentValue.innerHTML = temp; 
+                temp += value[1];
+                currentValue.innerHTML = temp;
             }
-        }
-        else if((temp[temp.length-1]) ===")"){
-            if((temp.split("(").length - 1)=== (temp.split(")").length - 1)){temp += "*" + value[0];currentValue.innerHTML = temp;console.log("=")}
-            else if((temp.split("(").length - 1)> (temp.split(")").length - 1)){temp += value[1];currentValue.innerHTML = temp; console.log(">")}
-        }
-        else{
-            temp += value[0];
-            currentValue.innerHTML = temp;
         }
     }
-        //Setting input limit
-        if(currentValue.innerHTML.length >len){
-            currentValue.innerHTML = currentValue.innerHTML.substring(0, len);
-            temp = currentValue.innerHTML;
-            result.innerHTML ="Maximum 15 characters!"
-            result.style.color ="red";
-        }
-        else{
-            //live calculation
-            result.innerHTML =eval(temp)
-        }
+    //Setting input limit
+    if(currentValue.innerHTML.length >=len){
+        currentValue.innerHTML = currentValue.innerHTML.substring(0, len);
+        temp = currentValue.innerHTML;
+        result.innerHTML ="Maximum 15 characters!"
+        result.style.color ="red";
+    }
+    else{
+        //live calculation
+        result.innerHTML =eval(temp)
+    }
 }
 
 //Decimal button
@@ -237,6 +256,7 @@ const handleBackSpace =() =>{
         result.style.color ="black";
     }
     else{
+        result.innerHTML ="";
         result.innerHTML =eval(temp);
         result.style.color ="black";
     }
